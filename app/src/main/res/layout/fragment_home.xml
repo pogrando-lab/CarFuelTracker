@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Top Bar: Title + GPS Status Badge -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/tvAppTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/app_name"
+                android:textColor="@color/text_primary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvGpsStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_status_badge"
+                android:text="@string/status_gps_idle"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Trip Header -->
+        <TextView
+            android:id="@+id/tvTripNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/trip_number_placeholder"
+            android:textColor="@color/text_accent"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Card 1: Time & Distance -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="14dp"
+            app:cardBackgroundColor="@color/surface"
+            app:strokeColor="@color/card_border"
+            app:strokeWidth="1dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/trip_label_time"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvTripTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/time_default"
+                        android:textColor="@color/text_primary"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/trip_label_distance"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvTripDistance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/distance_default"
+                        android:textColor="@color/text_accent"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Card 2: Speed (Current, Avg, Max) -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="14dp"
+            app:cardBackgroundColor="@color/surface"
+            app:strokeColor="@color/card_border"
+            app:strokeWidth="1dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/trip_label_speed"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvCurrentSpeed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/speed_default"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/trip_label_avg_speed"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvAvgSpeed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/avg_speed_default"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/trip_label_max_speed"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvMaxSpeed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/max_speed_default"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Card 3: Fuel & Cost -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="14dp"
+            app:cardBackgroundColor="@color/surface"
+            app:strokeColor="@color/card_border"
+            app:strokeWidth="1dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/trip_label_fuel"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvTripFuel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fuel_default"
+                        android:textColor="@color/text_primary"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/trip_label_cost"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvTripCost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cost_default"
+                        android:textColor="@color/status_green"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Action Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTripAction"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="@string/btn_start_trip"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="14dp"
+            android:backgroundTint="@color/primary"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+</ScrollView>

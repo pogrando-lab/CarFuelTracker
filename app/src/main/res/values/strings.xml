@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Car Fuel Tracker</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_home">Главная</string>
+    <string name="nav_map">Карта</string>
+    <string name="nav_history">История</string>
+    <string name="nav_statistics">Статистика</string>
+    <string name="nav_settings">Настройки</string>
+
+    <!-- Home Screen UI -->
+    <string name="status_gps_idle">GPS: ожидание</string>
+    <string name="status_gps_active">GPS: ● работает</string>
+
+    <string name="trip_number_placeholder">Поездка №--</string>
+    <string name="trip_label_time">Время</string>
+    <string name="trip_label_distance">Расстояние</string>
+    <string name="trip_label_speed">Скорость</string>
+    <string name="trip_label_avg_speed">Средняя</string>
+    <string name="trip_label_max_speed">Максимальная</string>
+    <string name="trip_label_fuel">Расход</string>
+    <string name="trip_label_cost">Стоимость</string>
+
+    <!-- Default formatted values -->
+    <string name="time_default">00:00</string>
+    <string name="distance_default">0.0 км</string>
+    <string name="speed_default">0 км/ч</string>
+    <string name="avg_speed_default">0 км/ч</string>
+    <string name="max_speed_default">0 км/ч</string>
+    <string name="fuel_default">0.00 л</string>
+    <string name="cost_default">0 ֏</string>
+
+    <!-- Buttons -->
+    <string name="btn_start_trip">Начать поездку</string>
+    <string name="btn_stop_trip">Завершить поездку</string>
+
+    <!-- Placeholders for other tabs in Stage 1 -->
+    <string name="tab_map_placeholder">Раздел: Карта\nБудет подключён на этапе карт</string>
+    <string name="tab_history_placeholder">Раздел: История\nБудет подключён на этапе истории</string>
+    <string name="tab_statistics_placeholder">Раздел: Статистика\nБудет подключён на этапе статистики</string>
+    <string name="tab_settings_placeholder">Раздел: Настройки\nБудет подключён на этапе настроек</string>
+</resources>
