@@ -1,5 +1,11 @@
 package com.carfueltracker.app.data.model;
 
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.Index;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -7,8 +13,16 @@ import java.util.Objects;
  * Модель точки геолокации GPS.
  * Хранит координаты, высоту, скорость в точке, время и точность.
  */
+@Entity(tableName = "gps_points",
+        foreignKeys = @ForeignKey(
+                entity = Trip.class,
+                parentColumns = "id",
+                childColumns = "tripId",
+                onDelete = ForeignKey.CASCADE),
+        indices = {@Index("tripId")})
 public class GPSPoint implements Serializable {
 
+    @PrimaryKey(autoGenerate = true)
     private long id;
     private long tripId;
     private double latitude;
@@ -22,6 +36,7 @@ public class GPSPoint implements Serializable {
         this.timestamp = System.currentTimeMillis();
     }
 
+    @Ignore
     public GPSPoint(long id, long tripId, double latitude, double longitude,
                     double altitude, float speedKmH, long timestamp, float accuracy) {
         this.id = id;
@@ -34,6 +49,7 @@ public class GPSPoint implements Serializable {
         this.accuracy = Math.max(0, accuracy);
     }
 
+    @Ignore
     public GPSPoint(long tripId, double latitude, double longitude,
                     double altitude, float speedKmH, long timestamp, float accuracy) {
         this(0, tripId, latitude, longitude, altitude, speedKmH, timestamp, accuracy);

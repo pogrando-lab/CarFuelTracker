@@ -19,7 +19,26 @@ public class AppSettingsModelTest {
         assertFalse(settings.isAutoStartTracking());
         assertTrue(settings.isKeepScreenOn());
         assertEquals(1000L, settings.getGpsIntervalMs());
+        assertEquals(AppSettings.FUEL_TYPE_GASOLINE, settings.getVehicleFuelType());
+        assertEquals(AppSettings.GAS_TYPE_LPG, settings.getGasType());
+        assertEquals(15d, settings.getGasConsumptionAdjustmentPercent(), 0.001d);
         assertTrue(settings.isValid());
+    }
+
+    @Test
+    public void clampsGasAdjustmentAndPersistsDualFuelOptions() {
+        AppSettings settings = AppSettings.createDefault();
+        settings.setVehicleFuelType(AppSettings.FUEL_TYPE_HYBRID);
+        settings.setGasType(AppSettings.GAS_TYPE_CNG);
+        settings.setGasConsumptionAdjustmentPercent(120d);
+        settings.setGboEnabled(true);
+        settings.setGasolineWarmupFirst(false);
+
+        assertEquals(AppSettings.FUEL_TYPE_HYBRID, settings.getVehicleFuelType());
+        assertEquals(AppSettings.GAS_TYPE_CNG, settings.getGasType());
+        assertEquals(100d, settings.getGasConsumptionAdjustmentPercent(), 0.001d);
+        assertTrue(settings.isGboEnabled());
+        assertFalse(settings.isGasolineWarmupFirst());
     }
 
     @Test

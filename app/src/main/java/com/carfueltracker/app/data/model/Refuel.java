@@ -1,5 +1,9 @@
 package com.carfueltracker.app.data.model;
 
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -8,8 +12,10 @@ import java.util.Objects;
  * Хранит дату, объём топлива в литрах, цену за литр, общую стоимость,
  * пробег на одометре, АЗС и примечания.
  */
+@Entity(tableName = "refuels")
 public class Refuel implements Serializable {
 
+    @PrimaryKey(autoGenerate = true)
     private long id;
     private long timestamp;
     private double liters;
@@ -27,6 +33,7 @@ public class Refuel implements Serializable {
         this.notes = "";
     }
 
+    @Ignore
     public Refuel(long id, long timestamp, double liters, double pricePerLiter,
                   double totalCost, double mileageKm, String fuelStation,
                   String fuelType, String notes) {
@@ -41,6 +48,7 @@ public class Refuel implements Serializable {
         this.notes = notes != null ? notes : "";
     }
 
+    @Ignore
     public Refuel(long timestamp, double liters, double pricePerLiter,
                   double mileageKm, String fuelStation, String fuelType, String notes) {
         this(0, timestamp, liters, pricePerLiter, liters * pricePerLiter, mileageKm, fuelStation, fuelType, notes);
